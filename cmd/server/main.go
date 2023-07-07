@@ -12,7 +12,8 @@ import (
 func main() {
 	ssh.Handle(handleCommands)
 	log.Println("firing up the server...")
-	log.Fatal(ssh.ListenAndServe("127.0.0.1:22", nil,
+	log.Fatal(ssh.ListenAndServe("127.0.0.1:4444", nil,
+		// had to change from the default port of 22 to 4444 because of my pc.
 		ssh.HostKeyFile(filepath.Join(os.Getenv("HOME"), ".ssh", "id_rsa")),
 		ssh.PasswordAuth(
 			ssh.PasswordHandler(func(ctx ssh.Context, password string) bool {
